@@ -10,7 +10,13 @@
             :key="item.article"
             :cart_item_data ="item"
             @deleteFromCart="deleteFromCart(index)"
-         />     
+            @increment = "increment(index)"
+            @decrement = "decrement(index)"
+         />
+         <div class="cart__total">
+             <p class="total__name">Total:</p>
+             <p>{{ cartTotal }}</p>
+         </div>     
     </div>
 </template>
 
@@ -31,18 +37,40 @@ export default {
         CartItem
     },
     computed:{
+        cartTotal(){
+            return this.cart_data.reduce((res, item) => res + item.price * item.quantity, 0)
+        }
     },
     methods:{
         ...mapActions([
-            'DELETE_FROM_CART'
+            'DELETE_FROM_CART',
+             'INCREMENT_CART_ITEM',
+            'DECREMENT_CART_ITEM'
         ]),
         deleteFromCart(index){
             this.DELETE_FROM_CART(index)
+        },
+        increment(index){
+            this.INCREMENT_CART_ITEM(index)
+        },
+         decrement(index){
+            this.DECREMENT_CART_ITEM(index)
         }
     }
 }
 </script>
 
 <style lang="scss">
-    
+    .cart{
+        &__total{
+            margin-top: 20px;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            color: rgb(75, 185, 75);
+        }
+        .total__name{
+            margin-right: 16px;
+        }
+    }
 </style>

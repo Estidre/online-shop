@@ -8,13 +8,18 @@
         </div>
         <div class="cart-item__quantity">
             <p>Qty:</p>
-            {{cart_item_data.quantity}}
+            <span>
+                <button @click="decrementItem">-</button>
+                {{cart_item_data.quantity}}
+                <button @click="incrementItem">+</button>
+            </span>
         </div>
         <button @click="deleteFromCart">Delete</button>
     </div>
 </template>
 
 <script>
+
 export default {
     name: "Cart-item",
     props:{
@@ -32,6 +37,12 @@ export default {
     methods:{
         deleteFromCart(){
             this.$emit('deleteFromCart')
+        },
+        decrementItem(){
+            this.$emit('decrement')
+        },
+        incrementItem(){
+            this.$emit('increment')
         }
     }
 }
@@ -48,6 +59,13 @@ export default {
         margin-bottom: 16px;
         img{
             max-width: 50px;
+        }
+        &__quantity{
+            button{
+                border:none;
+                background: transparent;
+                cursor: pointer;
+            }
         }
     }
 </style>
