@@ -1,6 +1,6 @@
 <template>
     <div class="select">
-        <p 
+        <p
         class="select__title" @click="areOptionsVisible = !areOptionsVisible"
         >{{selected}}</p>
         <div 
@@ -33,7 +33,7 @@ export default {
             default: ''
         }
     },
-    dara(){
+    data(){
         return{
             areOptionsVisible: false
         }
@@ -71,6 +71,7 @@ export default {
     .options{
         border: solid 1px #aeaeae;
         position: absolute;
+        background: #fff;
         top: 30px;
         right: 0;
         width: 100%; 
