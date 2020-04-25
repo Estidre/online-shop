@@ -8,6 +8,7 @@
         :selected="selected"
         :options="categories"
         @select="sortByCategories"
+        :isExpended="IS_DESKTOP"
         />
         <div class="catalog-list">
             <item 
@@ -46,7 +47,8 @@ export default {
     computed:{
         ...mapGetters([
             'PRODUCTS',
-            'CART'
+            'CART',
+            'IS_DESKTOP'
         ]),
         filteredProducts(){
             if(this.sortedProducts.length){

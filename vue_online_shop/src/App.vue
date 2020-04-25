@@ -6,6 +6,7 @@
 
 <script>
 import MainWrapper from './containers/Main-wrapper.vue'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'App',
@@ -15,7 +16,28 @@ export default {
   data(){
     return{}
   },
-  methods:{}
+  computed:{
+    ...mapGetters([
+      'IS_MOBILE',
+      'IS_DESCTOP'
+    ])
+  },
+  methods:{
+    ...mapActions([
+      'SET_MOBILE',
+      'SET_DESKTOP'
+    ])
+  },
+  mounted(){
+    let vm = this;
+    window.addEventListener('resize', function(){
+      if(window.innerWidth > 767){
+        vm.SET_DESKTOP()
+      }else{
+        vm.SET_MOBILE()
+      }
+    })
+  }
 }
 </script>
 
