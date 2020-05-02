@@ -1,15 +1,37 @@
 <template>
     <div class="item">
+
+        <v-popup
+        v-if="isInfoPopupVisible"
+        rightBtnTitle="Add to cart"
+        :popupTitle="product__data.name"
+        @closePopup="closeInfoPopup"
+        @rightBtnAction="addToCart"
+         >
+         <img :src="require('../assets/images/' + product__data.image)" alt="img">
+         <div>
+            <p>{{product__data.name}}</p>
+            <p>Price: {{product__data.price}}</p>
+            <p>{{product__data.category}}</p>
+         </div>
+         </v-popup>
+
         <img :src="require('../assets/images/' + product__data.image)" alt="img">
         <p>{{product__data.name}}</p>
         <p>Price: {{product__data.price}}</p>
+        <button class='btn show-info-btn' @click="showPopupInfo">Show info</button>
         <button class='btn' @click="addToCart">Add to Cart</button>
     </div>
 </template>
 
 <script>
+import vPopup from './popup/v-popup.vue'
+
 export default {
     name: 'Item',
+    components:{
+        vPopup
+    },
     props:{
         product__data:{
             type: Object,
@@ -18,7 +40,18 @@ export default {
             }
         }
     },
+    data(){
+        return{
+            isInfoPopupVisible: false
+        }
+    },
     methods:{
+        showPopupInfo(){
+            this.isInfoPopupVisible = true
+        },
+        closeInfoPopup(){
+            this.isInfoPopupVisible = false
+        },
        addToCart(){
            this.$emit('addToCart',this.product__data)
        }
