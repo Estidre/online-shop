@@ -3,7 +3,7 @@
         <img :src="require('../assets/images/' + cart_item_data.image)" alt="">
         <div class="cart-item__info">
             <p>{{cart_item_data.name}}</p>
-            <p>{{cart_item_data.price}}</p>
+            <p>{{cart_item_data.price | toFix}}</p>
             <p>{{cart_item_data.article}}</p>
         </div>
         <div class="cart-item__quantity">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import toFix from '../filters/toFix'
 
 export default {
     name: "Cart-item",
@@ -32,6 +33,9 @@ export default {
     },
     data(){
         return{}
+    },
+     filters:{
+        toFix
     },
     computed:{},
     methods:{

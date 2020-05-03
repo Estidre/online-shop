@@ -3,7 +3,7 @@
        {
         "image": "1.jpg",
         "name": "T-shirt",
-        "price": 200,
+        "price": 200.123123,
         "article": "T1",
         "avialabel":false,
         "category": "Мужские"
@@ -11,7 +11,7 @@
        {
         "image": "2.jpg",
         "name": "T-shirt",
-        "price": 500,
+        "price": 500.123123,
         "article": "T2",
         "avialabel":false,
         "category": "Унисекс"
@@ -19,7 +19,7 @@
        {
         "image": "3.jpg",
         "name": "T-shirt",
-        "price": 700,
+        "price": 700.123123,
         "article": "T3",
         "avialabel":false,
         "category": "Унисекс"

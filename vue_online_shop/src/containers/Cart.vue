@@ -15,7 +15,7 @@
          />
          <div class="cart__total">
              <p class="total__name">Total:</p>
-             <p>{{ cartTotal }}</p>
+             <p>{{ cartTotal | toFix }}</p>
          </div>     
     </div>
 </template>
@@ -23,6 +23,7 @@
 <script>
 import CartItem from '../components/Cart-item.vue'
 import {mapActions} from 'vuex'
+import toFix from '../filters/toFix'
 export default {
     name: 'Cart',
     props:{
@@ -35,6 +36,9 @@ export default {
     },
     components:{
         CartItem
+    },
+       filters:{
+        toFix
     },
     computed:{
         cartTotal(){

@@ -11,14 +11,14 @@
          <img :src="require('../assets/images/' + product__data.image)" alt="img">
          <div>
             <p>{{product__data.name}}</p>
-            <p>Price: {{product__data.price}}</p>
+            <p>Price: {{product__data.price | toFix}}</p>
             <p>{{product__data.category}}</p>
          </div>
          </v-popup>
 
         <img :src="require('../assets/images/' + product__data.image)" alt="img">
         <p>{{product__data.name}}</p>
-        <p>Price: {{product__data.price}}</p>
+        <p>Price: {{product__data.price | toFix}}</p>
         <button class='btn show-info-btn' @click="showPopupInfo">Show info</button>
         <button class='btn' @click="addToCart">Add to Cart</button>
     </div>
@@ -26,6 +26,7 @@
 
 <script>
 import vPopup from './popup/v-popup.vue'
+import toFix from '../filters/toFix'
 
 export default {
     name: 'Item',
@@ -44,6 +45,9 @@ export default {
         return{
             isInfoPopupVisible: false
         }
+    },
+    filters:{
+        toFix
     },
     methods:{
         showPopupInfo(){
