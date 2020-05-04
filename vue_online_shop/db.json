@@ -2,7 +2,7 @@
    "products":[
        {
         "image": "1.jpg",
-        "name": "T-shirt",
+        "name": "T-shirt 1",
         "price": 200.123123,
         "article": "T1",
         "avialabel":false,
@@ -10,7 +10,7 @@
        },
        {
         "image": "2.jpg",
-        "name": "T-shirt",
+        "name": "T-shirt 2",
         "price": 500.123123,
         "article": "T2",
         "avialabel":false,
@@ -18,7 +18,7 @@
        },
        {
         "image": "3.jpg",
-        "name": "T-shirt",
+        "name": "T-shirt 3",
         "price": 700.123123,
         "article": "T3",
         "avialabel":false,

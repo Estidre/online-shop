@@ -1,5 +1,6 @@
 <template>
     <div class="main-wrapper">
+        <v-header />
         <keep-alive>
             <router-view></router-view>
         </keep-alive>
@@ -7,9 +8,13 @@
 </template>
 
 <script>
+import vHeader from '../components/layouts/v-header'
 
 export default {
     name: 'Main-wrapper',
+    components:{
+        vHeader
+    },
     props:{},
     data(){
         return{
@@ -23,7 +28,6 @@ export default {
 
 <style lang="scss">
   .main-wrapper{
-      max-width: 900px;
       margin: 0 auto;
   }
 </style>

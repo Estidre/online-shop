@@ -15,7 +15,7 @@
                 <input 
                 type="range" 
                 min="0" 
-                max="1000" 
+                max="10000" 
                 step="10"
                 v-model.number="minPrice"
                 @change="setRangeSlider"
@@ -23,7 +23,7 @@
                 <input 
                 type="range" 
                 min="0" 
-                max="1000" 
+                max="10000" 
                 step="10"
                 v-model.number="maxPrice"
                 @change="setRangeSlider"
@@ -67,14 +67,15 @@ export default {
             selected: 'Все',
             sortedProducts: [],
             minPrice: 0,
-            maxPrice: 1000
+            maxPrice: 10000
         }
     },
     computed:{
         ...mapGetters([
             'PRODUCTS',
             'CART',
-            'IS_DESKTOP'
+            'IS_DESKTOP',
+            'SEARCH_VALUE'
         ]),
         filteredProducts(){
             if(this.sortedProducts.length){
@@ -113,6 +114,21 @@ export default {
             })
             }
         },
+        sortProductBySearchValue(value){
+            this.sortedProducts = [...this.PRODUCTS]
+            if(value){
+                this.sortedProducts = this.sortedProducts.filter(function(item){
+                return item.name.toLowerCase().includes(value.toLowerCase())
+            })
+            }else{
+                this.sortedProducts = this.PRODUCTS
+            }
+        }
+    },
+    watch:{
+        SEARCH_VALUE(){
+            this.sortProductBySearchValue(this.SEARCH_VALUE)
+        }
     },
     mounted(){
         this.GET_PRODUCTS()
@@ -120,6 +136,7 @@ export default {
             if(res.data){
                 console.log('yes')
                 this.sortByCategories()
+                this.sortProductBySearchValue(this.SEARCH_VALUE)
             }
         })
     }
@@ -136,7 +153,7 @@ export default {
         }
         &__link_to_cart{
             position: absolute;
-            top: 10px;
+            top: 80px;
             right: 10px;
             padding: 16px;
             border: solid 1px #aeaeae;
